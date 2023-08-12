@@ -24,8 +24,10 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cors());
 
+//Connecting React and Nodejs
+app.use(express.static('dist'))
 app.get("/", (req, res) => {
-  res.send("Home page");
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.use("/api/upload", uploadRouter);
@@ -39,5 +41,9 @@ const port = process.env.PORT || 5000;
 const start = async () => {
   app.listen(port, console.log(`Server is listening on port ${port}...`));
 };
+
+app.get("/*", (req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 
 start();
