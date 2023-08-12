@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "heroku-prebuild": " cd ../3d-printing-react && npm ci && npm run build && mv dist ../3d-printing-node",
+    "start": "cd ../3d-printing-node && npm ci && nodemon"
   },
   "keywords": [],
   "author": "",
